@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
 
   //#region Lifecycle
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.users = [];
   }
 
@@ -36,10 +37,9 @@ export class AppComponent implements OnInit {
   //#region Methods
 
   private loadUsers(): void {
-    this.users = [
-      { id: 1, first_name: 'Oussama', last_name: 'Essamadi', age: 24 },
-      { id: 2, first_name: 'John', last_name: 'Doe', age: 47 }
-    ];
+    this.http.get<Array<any>>('http://localhost:3000/users').subscribe(users=> {
+      this.users = users;
+    });
   }
 
   //#endregion
