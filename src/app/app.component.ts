@@ -10,18 +10,18 @@ export class AppComponent implements OnInit {
 
   //#region Properties
 
-  users: Array<any>;
+  cars: Array<any>;
 
   //#endregion
 
   //#region Lifecycle
 
   constructor(private http: HttpClient) {
-    this.users = [];
+    this.cars = [];
   }
 
   ngOnInit(): void {
-    this.loadUsers();
+    this.loadCars();
   }
 
   //#endregion
@@ -29,16 +29,16 @@ export class AppComponent implements OnInit {
   //#region Event handlers
 
   onRefresh(): void {
-    this.loadUsers();
+    this.loadCars();
   }
 
   //#endregion
 
   //#region Methods
 
-  private loadUsers(): void {
-    this.http.get<Array<any>>('http://localhost:3000/users').subscribe(users=> {
-      this.users = users;
+  private loadCars(): void {
+    this.http.get<Array<any>>('http://localhost:3000/cars').subscribe(cars => {
+      this.cars = cars;
     });
   }
 

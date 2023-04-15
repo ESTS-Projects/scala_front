@@ -1,15 +1,17 @@
 <div class="head">
-  <h1 class="title">List of users [{{ users.length }}]</h1>
+  <h1 class="title">List of cars [{{ cars.length }}]</h1>
   <button (click)="onRefresh()" class="refresh">Refresh</button>
 </div>
 
 <div class="body">
-  <ul *ngFor="let user of users" class="list">
-    <li class="list__item">
-      <span class="list__label list__label--id">#{{ user.id }}</span>
-      <span class="list__label">First name: <b>{{ user.first_name }}</b></span>
-      <span class="list__label">Last name: <b>{{ user.last_name }}</b></span>
-      <span class="list__label">Age: <b>{{ user.age }}</b></span>
-    </li>
-  </ul>
+  <div *ngFor="let car of cars" class="card">
+    <div class="card__image">
+      <img [src]="car.photo" [alt]="car.name + '\'s picture'">
+    </div>
+
+    <div class="card__info">
+      <h2 class="card__title">{{ car.name }}</h2>
+      <h4 class="card__subtitle">{{ car.brand }}</h4>
+    </div>
+  </div>
 </div>
